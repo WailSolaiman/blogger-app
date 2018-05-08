@@ -4,8 +4,8 @@ class PostForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            content: ''
+            title: props.post ? props.post.title : '',
+            content: props.post ? props.post.content : ''
         };
     };
 

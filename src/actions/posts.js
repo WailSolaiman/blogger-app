@@ -9,10 +9,10 @@ export const createPost = ({ title = '', content = '' } = {}) => ({
     }
 });
 //edit post
-export const editPost = (pid, update) => ({
+export const editPost = (pid, updates) => ({
     type: 'EDIT_POST',
     pid,
-    update
+    updates
 });
 //remove post
 export const removePost = (pid) => ({
