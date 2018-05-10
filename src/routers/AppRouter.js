@@ -26,3 +26,6 @@ const AppRouter = () => (
 );
 
 export default AppRouter;
+
+/* <PublicRoute path="/read" component={} />
+<PublicRoute path="/read/:pid" component={} /> */

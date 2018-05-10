@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BlogListItem from './BlogListItem';
+import selectPosts from '../selectors/posts';
 
 const BlogList = (props) => (
-    <div>
+    <div className="content-container">
         {
             props.posts.map((post) => {
                 return <BlogListItem key={post.pid} {...post} />
@@ -14,7 +15,7 @@ const BlogList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        posts: state.posts
+        posts: selectPosts(state.posts, state.filters)
     };
 };
 

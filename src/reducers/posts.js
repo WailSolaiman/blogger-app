@@ -1,17 +1,4 @@
-const posts = [
-    {   
-        pid: '12452478',
-        title: 'Learn React 16',
-        content: 'React 16 - The Complete Guide (incl. React Router 4 & Redux)'
-    },
-    {
-        pid: '86454125',
-        title: 'ES6 - EcmaScript 6',
-        content: 'ECMAScript 6 — New Features: Overview & Comparison'
-    }
-];
-
-export default (state = posts, action) => {
+export default (state = [], action) => {
     switch(action.type) {
         case 'CREATE_POST':
             return [
@@ -32,6 +19,8 @@ export default (state = posts, action) => {
             });
         case 'REMOVE_POST':
             return state.filter((post) => post.pid !== action.pid);
+        case 'SET_POSTS':
+            return action.posts;
         default:
             return state;
     }

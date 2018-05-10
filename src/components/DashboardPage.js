@@ -4,7 +4,6 @@ import BlogList from './BlogList';
 
 const DashboardPage = () => (
   <div>
-    Dashboard page content
     <BlogFilter />
     <BlogList />
   </div>

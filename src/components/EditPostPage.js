@@ -1,26 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
-import { editPost, removePost } from '../actions/posts';
+import { startEditPost, startRemovePost } from '../actions/posts';
 
 const EditPostPage = (props) => {
     return (
         <div>
-            <PostForm 
-                post={props.post} 
-                onSubmit={(post) => {
-                    props.editPost(props.match.params.pid, post);
-                    props.history.push('/dashboard');
-                }}
-            />
-            <button 
-                onClick={() => {
-                    props.removePost(props.match.params.pid);
-                    props.history.push('/dashboard');
-                }}
-            >
-                Remove Expense
-            </button>
+            <div className="page-header">
+                <div className="content-container">
+                    <h1 className="page-header__title">Edit Post</h1>
+                </div>
+            </div>
+            <div className="content-container">
+                <PostForm 
+                    post={props.post} 
+                    onSubmit={(post) => {
+                        props.startEditPost(props.match.params.pid, post);
+                        props.history.push('/dashboard');
+                    }}
+                />
+                <button 
+                    className="button button--secondary"
+                    onClick={() => {
+                        props.startRemovePost(props.match.params.pid);
+                        props.history.push('/dashboard');
+                    }}
+                >
+                    Remove Expense
+                </button>
+            </div>
         </div>
     );
 };
@@ -30,8 +38,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editPost: (id, updates) => dispatch(editPost(id, updates)),
-    removePost: (id) => dispatch(removePost(id))
+    startEditPost: (id, updates) => dispatch(startEditPost(id, updates)),
+    startRemovePost: (id) => dispatch(startRemovePost(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPostPage);
